@@ -1,0 +1,64 @@
+{
+    "students": [
+      {
+        "name": "Bíró Benjámin",
+        "birthdate": "2005-08-02",
+        "email": "biro.benjamin@gmail.com"
+      },
+      {
+        "name": "Busai Dániel",
+        "birthdate": "2005-04-26",
+        "email": "busai.daniel@gmail.com"
+      },
+      {
+        "name": "Gajdos Gergő",
+        "birthdate": "2006-04-06",
+        "email": "gajdos.gergo@gmail.com"
+      },
+      {
+        "name": "Galbács Bence",
+        "birthdate": "2005-04-25",
+        "email": "galbacs.bence@gmail.com"
+      },
+      {
+        "name": "Hornyák Ákos",
+        "birthdate": "2005-10-20",
+        "email": "hornyak.akos@gmail.com"
+      },
+      {
+        "name": "Kelemen Gábor",
+        "birthdate": "2006-04-28",
+        "email": "kelemen.gabor@gmail.com"
+      },
+      {
+        "name": "Keresztúri Hanna",
+        "birthdate": "2005-12-15",
+        "email": "kereszturi.hanna@gmail.com"
+      },
+      {
+        "name": "Molnár Andor",
+        "birthdate": "2005-08-07",
+        "email": "molnar.andor@gmail.com"
+      },
+      {
+        "name": "Pádár Zsolt",
+        "birthdate": "2005-11-01",
+        "email": "padar.zsolt@gmail.com"
+      },
+      {
+        "name": "Urbán Marcell József",
+        "birthdate": "2006-04-08",
+        "email": "urban.marcell.jozsef@gmail.com"
+      },
+      {
+        "name": "Varga Bence",
+        "birthdate": "2005-08-15",
+        "email": "varga.bence@gmail.com"
+      },
+      {
+        "name": "Visegrádi Tamás",
+        "birthdate": "2005-08-27",
+        "email": "visegradi.tamas@gmail.com"
+      }
+    ]
+  }

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" ng-app="studentApp">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+
+        * {
+            font-family: Bahnschrift;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        body {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #444;
+        }
+
+        th, td {
+            border: 1px solid #666;
+        }
+
+        th {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .menu-item {
+            padding: 10px 20px;
+            background-color: #333;
+            border: 2px solid orange;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        tbody tr {
+            background-color: #444;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+        }
+
+        td {
+            border: 2px solid #FF8C00;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            margin-top: 20px;
+            background-color: #333;
+            border: 2px solid orange;
+            color: white;
+            border-radius: 5px;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+    </style>
+
+</head>
+
+    <body ng-controller="studentController">
+
+        <div class="container">
+
+        <h1>List of students </h1>
+
+        <div class="menu">
+            <div class="menu-item" ng-click="sortBy('name')">Name</div>
+            <div class="menu-item" ng-click="sortBy('birthdate')">Date of Birth</div>
+            <div class="menu-item" ng-click="sortBy('email')">E-mail</div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" ng-model="searchText" placeholder="Search...">
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th ng-click="sortBy('name')">Name</th>
+                <th ng-click="sortBy('birthdate')">Date of birth</th>
+                <th ng-click="sortBy('email')">E-mail</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="s in students | filter: searchText | orderBy:sortColumn:reverseSort">
+                <td>{{s.name}}</td>
+                <td>{{s.birthdate}}</td>
+                <td>{{s.email}}</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+            <script>
+
+                angular.module("studentApp", []).controller('studentController', function($scope, $http) {
+
+                    $scope.students = [];
+                    $scope.sortColumn = "name";
+                    $scope.reverseSort = false;
+
+                    $http.get("student.json").then(function(response) {
+
+                        $scope.students = response.data.students;
+                        console.log("loading students: ", $scope.students)
+
+                    });
+
+                    $scope.sortBy = function(column) {
+
+                        if ($scope.sortColumn === column) {
+
+                            $scope.reverseSort = !$scope.reverseSort;
+
+                        }
+                        else
+                        {
+                            $scope.sortColumn = column;
+                            $scope.reverseSort = false;
+                        }
+
+                    }
+
+                });
+
+            </script>
+
+        </div>
+
+    </body>
+
+</html>
